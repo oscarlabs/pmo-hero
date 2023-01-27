@@ -1,0 +1,2 @@
+class ProjectMetric < ApplicationRecord
+end
