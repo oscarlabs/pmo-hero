@@ -23,11 +23,11 @@ default: &default
 
 development:
   <<: *default
-  database: easypmo_development
-  host: 127.0.0.1
-  port: 5432
-  user: oscaradmin
-  password: password
+  database: <%= ENV['DB_NAME'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  user: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -61,11 +61,11 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: easypmo_test
-  host: 127.0.0.1
-  port: 5432
-  user: oscaradmin
-  password: password
+  database: <%= ENV['DB_TEST'] %>
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  user: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -89,6 +89,6 @@ test:
 #
 production:
   <<: *default
-  database: easypmo_production
-  username: easypmo
+  database: <%= ENV['DB_PROD'] %>
+  username: nouser
   password: <%= ENV["EASYPMO_DATABASE_PASSWORD"] %>
